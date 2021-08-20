@@ -1,0 +1,79 @@
+import React, { FC } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Drawer from "@material-ui/core/Drawer";
+import Button from "@material-ui/core/Button";
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import MenuIcon from "@material-ui/icons/Menu";
+import useStyles from "./useStyles";
+
+type ReduxStateType = {
+  AccountReducer: {
+    role: string;
+  };
+};
+
+const Sidebar = () => {
+  const classes = useStyles();
+  const role = useSelector(
+    (state: ReduxStateType) => state.AccountReducer.role
+  );
+  const anchor = "left";
+  const [state, setState] = React.useState(false);
+
+  const toggleDrawer = (open: boolean) => {
+    setState(open);
+  };
+
+  return (
+    <div>
+      <React.Fragment key={anchor}>
+        <Button onClick={() => toggleDrawer(true)}>
+          <MenuIcon />
+        </Button>
+        <Drawer
+          anchor={anchor}
+          open={state}
+          onClose={() => toggleDrawer(false)}
+        >
+          <div role="presentation" onClick={() => toggleDrawer(false)}>
+            <List>
+              <ListItem button>
+                <ListItemIcon>
+                  <InboxIcon />
+                  Inbox icon
+                </ListItemIcon>
+                <ListItemText />
+              </ListItem>
+            </List>
+            <Divider />
+            <List className={classes.list}>
+              <Link to="/">
+                <ListItem button>Home</ListItem>
+              </Link>
+              <Link to="/catalog">
+                <ListItem button>Catalog</ListItem>
+              </Link>
+              {role === "admin" ? (
+                <Link to="/add_product">
+                  <ListItem button>Create product</ListItem>
+                </Link>
+              ) : (
+                <Link to="/access_error">
+                  <ListItem button>Create product</ListItem>
+                </Link>
+              )}
+            </List>
+          </div>
+        </Drawer>
+      </React.Fragment>
+    </div>
+  );
+};
+
+export default Sidebar;

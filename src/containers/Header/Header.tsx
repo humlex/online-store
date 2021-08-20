@@ -9,13 +9,13 @@ import {
   Menu,
 } from "@material-ui/core";
 import { useSelector } from "react-redux";
-import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import ToggleButton from "../../components/ToggleButton";
 import Logo from "../../components/Logo";
 import useStyles from "./useStyles";
+import Sidebar from "../../components/Sidebar";
 
 type ReduxStateType = {
   AccountReducer: {
@@ -114,7 +114,7 @@ const Header = () => {
             color="inherit"
             aria-label="open drawer"
           >
-            <MenuIcon />
+            <Sidebar />
           </IconButton>
           <Logo />
           <div className={classes.grow} />
