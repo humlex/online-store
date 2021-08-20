@@ -8,7 +8,7 @@ import {
   MenuItem,
   Menu,
 } from "@material-ui/core";
-
+import { useSelector } from "react-redux";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -17,9 +17,17 @@ import ToggleButton from "../../components/ToggleButton";
 import Logo from "../../components/Logo";
 import useStyles from "./useStyles";
 
+type ReduxStateType = {
+  AccountReducer: {
+    role: string;
+  };
+};
+
 const Header = () => {
   const classes = useStyles();
-  const adminMode = false;
+  const role = useSelector(
+    (state: ReduxStateType) => state.AccountReducer.role
+  );
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -84,7 +92,7 @@ const Header = () => {
         >
           <AccountCircle />
         </IconButton>
-        {adminMode ? (
+        {role === "admin" ? (
           <Typography className={classes.role}>Admin</Typography>
         ) : (
           <Typography className={classes.role}>User</Typography>
@@ -124,7 +132,7 @@ const Header = () => {
               aria-haspopup="true"
               color="inherit"
             >
-              {adminMode ? (
+              {role === "admin" ? (
                 <Typography className={classes.role}>Admin</Typography>
               ) : (
                 <Typography className={classes.role}>User</Typography>

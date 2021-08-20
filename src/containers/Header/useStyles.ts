@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
     },
     role: {
+      minWidth: 50,
       marginRight: 10,
     },
     toggle_mobile: {
