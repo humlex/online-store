@@ -1,4 +1,5 @@
 import React from "react";
+import AccessErrorCard from "../../components/AccessErrorCard";
 
-const AccessError = () => <>It`s access error page</>;
+const AccessError = () => <AccessErrorCard />;
 export default AccessError;
