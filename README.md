@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 Don`t forget to start json server before using this app: json-server --watch src/store/db.json
+=======
+Don`t forget to start json server before using this app:
+json-server --watch src/store/db.json
+>>>>>>> 43778e6a48dde3f181c8e16199148ed265082c1b
 
 # Getting Started with Create React App
 
