@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
@@ -33,9 +32,7 @@ const Sidebar = () => {
   return (
     <div>
       <React.Fragment key={anchor}>
-        <Button onClick={() => toggleDrawer(true)}>
-          <MenuIcon />
-        </Button>
+        <MenuIcon onClick={() => toggleDrawer(true)} />
         <Drawer
           anchor={anchor}
           open={state}
