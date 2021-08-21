@@ -1,4 +1,4 @@
-Don`t forget to start json server befor using this app:
+Don`t forget to start json server before using this app:
 json-server --watch src/store/db.json
 
 # Getting Started with Create React App
