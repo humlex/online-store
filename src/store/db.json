@@ -1,0 +1,67 @@
+{
+  "phones": [
+    {
+      "id": 1,
+      "name": "iPhone",
+      "img": "Img",
+      "description": "iPhone description",
+      "price": 12.99
+    },
+    {
+      "id": 2,
+      "name": "iPhone",
+      "img": "Img",
+      "description": "iPhone description",
+      "price": 12.99
+    },
+    {
+      "id": 3,
+      "name": "iPhone",
+      "img": "Img",
+      "description": "iPhone description",
+      "price": 12.99
+    },
+    {
+      "id": 4,
+      "name": "iPhone",
+      "img": "Img",
+      "description": "iPhone description",
+      "price": 12.99
+    },
+    {
+      "id": 5,
+      "name": "iPhone",
+      "img": "Img",
+      "description": "iPhone description",
+      "price": 12.99
+    },
+    {
+      "id": 6,
+      "name": "iPhone",
+      "img": "Img",
+      "description": "iPhone description",
+      "price": 12.99
+    },
+    {
+      "id": 7,
+      "name": "iPhone",
+      "img": "Img",
+      "description": "iPhone description",
+      "price": 12.99
+    },
+    {
+      "id": 8,
+      "name": "iPhone",
+      "img": "Img",
+      "description": "iPhone description",
+      "price": 12.99
+    },
+    {
+      "id": 9,
+      "name": "iPhone",
+      "img": "Img",
+      "description": "iPhone description",
+      "price": 12.99
+    }
+  ]
+}
