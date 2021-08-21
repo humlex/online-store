@@ -12,10 +12,10 @@ import useStyles from "./useStyles";
 const FilterPannel = () => {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    apple: true,
+    apple: false,
     xiaomi: false,
     oneplus: false,
-    samsung: true,
+    samsung: false,
     asus: false,
     vivo: false,
   });

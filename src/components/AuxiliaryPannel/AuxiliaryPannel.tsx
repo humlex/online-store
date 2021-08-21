@@ -1,10 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
 import { Box } from "@material-ui/core";
 import Searchbar from "./Searchbar";
 import FilterPannel from "./FilterPannel";
 import useStyles from "./useStyles";
 
-const AuxiliaryPannel = () => {
+type AuxiliaryPanelProps = {
+  onChange: (value: string) => void;
+};
+
+const AuxiliaryPannel: FC<AuxiliaryPanelProps> = ({ onChange }) => {
   const classes = useStyles();
   return (
     <Box
@@ -14,7 +18,7 @@ const AuxiliaryPannel = () => {
       justifyContent="space-around"
       alignItems="center"
     >
-      <Searchbar />
+      <Searchbar onChange={(value: string) => onChange(value)} />
       <FilterPannel />
     </Box>
   );
