@@ -1,3 +1,5 @@
+Don`t forget to start json server before using this app: json-server --watch src/store/db.json
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
