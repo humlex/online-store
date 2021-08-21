@@ -41,11 +41,7 @@ const Sidebar = () => {
           <div role="presentation" onClick={() => toggleDrawer(false)}>
             <List>
               <ListItem button>
-                <ListItemIcon>
-                  <InboxIcon />
-                  Inbox icon
-                </ListItemIcon>
-                <ListItemText />
+                <ListItemText>Navigation pannel</ListItemText>
               </ListItem>
             </List>
             <Divider />

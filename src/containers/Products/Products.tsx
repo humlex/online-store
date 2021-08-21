@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Grid, Box, Container } from "@material-ui/core";
+import AuxiliaryPannel from "../../components/AuxiliaryPannel";
+import Product from "../../components/Product";
 import useStyles from "./useStyles";
 
-type Phone = {
+type ProductType = {
   id: number;
   name: string;
   img: string;
@@ -12,7 +15,7 @@ type Phone = {
 
 const Products = () => {
   const classes = useStyles();
-  const [phones, setPhones] = useState<Phone[]>([]);
+  const [phones, setPhones] = useState<ProductType[]>([]);
 
   const loadData = async () => {
     try {
@@ -29,9 +32,22 @@ const Products = () => {
 
   return (
     <>
-      Products
-      <br />
-      <button>get data</button>
+      <Box display="flex" className={classes.content_box}>
+        <Container>
+          <AuxiliaryPannel />
+        </Container>
+        <Grid container spacing={5}>
+          {phones.map((phone: ProductType) => (
+            <Product
+              id={phone.id}
+              name={phone.name}
+              img={phone.img}
+              description={phone.description}
+              price={phone.price}
+            />
+          ))}
+        </Grid>
+      </Box>
     </>
   );
 };
