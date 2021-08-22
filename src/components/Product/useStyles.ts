@@ -4,6 +4,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     grid_item: {
       width: 1300,
+      position: "relative",
     },
     image: {
       height: 400,
@@ -21,6 +22,13 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     card_button: {
       padding: 10,
+    },
+    delete_btn: {
+      color: "#ff0000",
+      position: "absolute",
+      top: 20,
+      right: 20,
+      backgroundColor: "#ececec",
     },
   })
 );
