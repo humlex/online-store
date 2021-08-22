@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
-import { useSelector } from "react-redux";
+import { ADD_PRODUCT, REMOVE_PRODUCT } from "../../redux/UserCatalog/actions";
+import { useSelector, useDispatch } from "react-redux";
 import DeleteIcon from "@material-ui/icons/Delete";
 import {
   Grid,
@@ -25,10 +26,14 @@ type ReduxStateType = {
   AccountReducer: {
     role: string;
   };
+  CatalogReducer: {
+    products: ProductProps[];
+  };
 };
 
 const Product: FC<ProductProps> = ({ id, name, img, description, price }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const history = useHistory();
   const role = useSelector(
     (state: ReduxStateType) => state.AccountReducer.role
@@ -36,7 +41,7 @@ const Product: FC<ProductProps> = ({ id, name, img, description, price }) => {
   const defaultUrl =
     "https://i.citrus.ua/uploads/shop/a/6/a6c56497276a0bd71793f2ad0307c60d.jpg";
 
-  const handleDelete = async (id: number) => {
+  const handleDeleteFromDB = async (id: number) => {
     try {
       await axios.delete(`http://localhost:3004/phones/${id}`);
     } catch (err) {
@@ -60,12 +65,30 @@ const Product: FC<ProductProps> = ({ id, name, img, description, price }) => {
           <Typography>Price: {price}$</Typography>
         </CardContent>
         <CardActionArea>
-          <Button className={classes.card_button}>Buy now!</Button>
-          <Button className={classes.card_button}>Remove from catalog</Button>
+          <Button
+            className={classes.card_button}
+            onClick={() =>
+              dispatch({
+                type: ADD_PRODUCT,
+                payload: { id, name, img, description, price },
+              })
+            }
+          >
+            Buy now!
+          </Button>
+          <Button
+            className={classes.card_button}
+            onClick={() => dispatch({ type: REMOVE_PRODUCT, id: id })}
+          >
+            Remove from catalog
+          </Button>
         </CardActionArea>
       </Card>
       {role === "admin" && (
-        <Button className={classes.delete_btn} onClick={() => handleDelete(id)}>
+        <Button
+          className={classes.delete_btn}
+          onClick={() => handleDeleteFromDB(id)}
+        >
           <DeleteIcon />
         </Button>
       )}

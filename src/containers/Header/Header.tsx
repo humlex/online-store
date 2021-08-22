@@ -20,9 +20,20 @@ import useStyles from "./useStyles";
 import Sidebar from "../../components/Sidebar";
 import CatalogMenu from "../../components/CatalogMenu";
 
+type Product = {
+  id: number;
+  name: string;
+  img: string;
+  description: string;
+  price: number;
+};
+
 type ReduxStateType = {
   AccountReducer: {
     role: string;
+  };
+  CatalogReducer: {
+    products: Product[];
   };
 };
 
@@ -30,6 +41,9 @@ const Header = () => {
   const classes = useStyles();
   const role = useSelector(
     (state: ReduxStateType) => state.AccountReducer.role
+  );
+  const catalogItems = useSelector(
+    (state: ReduxStateType) => state.CatalogReducer.products
   );
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [openCatalog, setOpenCatalog] = React.useState<boolean>(false);
@@ -129,7 +143,11 @@ const Header = () => {
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit" onClick={handleOpenCatalog}>
-                <Badge badgeContent={4} color="secondary">
+                <Badge
+                  badgeContent={catalogItems.length}
+                  color="secondary"
+                  invisible={catalogItems.length === 0}
+                >
                   <ClickAwayListener onClickAway={() => setOpenCatalog(false)}>
                     <ShoppingCartIcon />
                   </ClickAwayListener>
