@@ -3,13 +3,8 @@ import Switch from "@material-ui/core/Switch";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { ADMIN_MODE, USER_MODE } from "../../redux/AccountMode/actions";
+import { ReducersType } from "../../types/types";
 import useStyles from "./useStyles";
-
-type ReduxStateType = {
-  AccountReducer: {
-    role: string;
-  };
-};
 
 const ToggleButton = () => {
   const classes = useStyles();
@@ -18,9 +13,7 @@ const ToggleButton = () => {
   const dispatch = useDispatch();
   const setAdminMode = () => dispatch({ type: ADMIN_MODE });
   const setUserMode = () => dispatch({ type: USER_MODE });
-  const role = useSelector(
-    (state: ReduxStateType) => state.AccountReducer.role
-  );
+  const role = useSelector((state: ReducersType) => state.AccountReducer.role);
   return (
     <div className={classes.toggle_root}>
       <Switch

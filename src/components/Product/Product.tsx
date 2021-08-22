@@ -12,32 +12,14 @@ import {
   Typography,
   Button,
 } from "@material-ui/core";
+import { ProductType, ReducersType } from "../../types/types";
 import useStyles from "./useStyles";
 
-type ProductProps = {
-  id: number;
-  name: string;
-  img: string;
-  description: string;
-  price: number;
-};
-
-type ReduxStateType = {
-  AccountReducer: {
-    role: string;
-  };
-  CatalogReducer: {
-    products: ProductProps[];
-  };
-};
-
-const Product: FC<ProductProps> = ({ id, name, img, description, price }) => {
+const Product: FC<ProductType> = ({ id, name, img, description, price }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
-  const role = useSelector(
-    (state: ReduxStateType) => state.AccountReducer.role
-  );
+  const role = useSelector((state: ReducersType) => state.AccountReducer.role);
   const defaultUrl =
     "https://i.citrus.ua/uploads/shop/a/6/a6c56497276a0bd71793f2ad0307c60d.jpg";
 

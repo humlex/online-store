@@ -1,13 +1,10 @@
 import React, { FC } from "react";
 import { Paper, Grid, TextField } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
+import { PropsType } from "../types";
 import useStyles from "./useStyles";
 
-type ProductType = {
-  onChange: (event: string) => void;
-};
-
-const Searchbar: FC<ProductType> = ({ onChange }) => {
+const Searchbar: FC<PropsType> = ({ onChange }) => {
   const classes = useStyles();
 
   return (

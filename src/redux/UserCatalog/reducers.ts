@@ -1,21 +1,8 @@
 import { ADD_PRODUCT, REMOVE_PRODUCT, CLEAR_CATALOG } from "./actions";
-
-type ActionType = {
-  type: string;
-  id?: number;
-  payload?: Product;
-};
-
-type Product = {
-  id: number;
-  name: string;
-  img: string;
-  description: string;
-  price: number;
-};
+import { ProductType, ActionType } from "../../types/types";
 
 type initialStateType = {
-  products: Product[];
+  products: ProductType[];
 };
 
 const initialState: initialStateType = {

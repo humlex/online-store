@@ -19,31 +19,13 @@ import Logo from "../../components/Logo";
 import useStyles from "./useStyles";
 import Sidebar from "../../components/Sidebar";
 import CatalogMenu from "../../components/CatalogMenu";
-
-type Product = {
-  id: number;
-  name: string;
-  img: string;
-  description: string;
-  price: number;
-};
-
-type ReduxStateType = {
-  AccountReducer: {
-    role: string;
-  };
-  CatalogReducer: {
-    products: Product[];
-  };
-};
+import { ReducersType } from "../../types/types";
 
 const Header = () => {
   const classes = useStyles();
-  const role = useSelector(
-    (state: ReduxStateType) => state.AccountReducer.role
-  );
+  const role = useSelector((state: ReducersType) => state.AccountReducer.role);
   const catalogItems = useSelector(
-    (state: ReduxStateType) => state.CatalogReducer.products
+    (state: ReducersType) => state.CatalogReducer.products
   );
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [openCatalog, setOpenCatalog] = React.useState<boolean>(false);

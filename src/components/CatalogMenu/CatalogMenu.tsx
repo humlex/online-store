@@ -3,26 +3,13 @@ import useStyles from "./useStyles";
 import { CLEAR_CATALOG } from "../../redux/UserCatalog/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Paper, Typography, Button } from "@material-ui/core";
-
-type Product = {
-  id: number;
-  name: string;
-  img: string;
-  description: string;
-  price: number;
-};
-
-type CatalogReducer = {
-  CatalogReducer: {
-    products: Product[];
-  };
-};
+import { ReducersType } from "../../types/types";
 
 const CatalogMenu = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const catalog = useSelector(
-    (state: CatalogReducer) => state.CatalogReducer.products
+    (state: ReducersType) => state.CatalogReducer.products
   );
   const total = catalog.reduce((total, product) => {
     return total + product.price;
@@ -36,7 +23,6 @@ const CatalogMenu = () => {
     e.stopPropagation();
     dispatch({ type: CLEAR_CATALOG });
   };
-  console.log("catalog", catalog);
   return (
     <Paper elevation={5} className={classes.root}>
       <Typography>Total: {total}$ </Typography>

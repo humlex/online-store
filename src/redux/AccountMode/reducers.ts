@@ -1,8 +1,5 @@
 import { ADMIN_MODE, USER_MODE } from "./actions";
-
-type ActionType = {
-  type: string;
-};
+import { ActionType } from "../../types/types";
 
 type initialStateType = {
   role: string;

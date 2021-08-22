@@ -2,12 +2,9 @@ import React, { FC } from "react";
 import { Box } from "@material-ui/core";
 import Searchbar from "./Searchbar";
 import useStyles from "./useStyles";
+import { PropsType } from "./types";
 
-type AuxiliaryPanelProps = {
-  onChange: (value: string) => void;
-};
-
-const AuxiliaryPannel: FC<AuxiliaryPanelProps> = ({ onChange }) => {
+const AuxiliaryPannel: FC<PropsType> = ({ onChange }) => {
   const classes = useStyles();
   return (
     <Box

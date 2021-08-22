@@ -7,19 +7,12 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import MenuIcon from "@material-ui/icons/Menu";
+import { ReducersType } from "../../types/types";
 import useStyles from "./useStyles";
-
-type ReduxStateType = {
-  AccountReducer: {
-    role: string;
-  };
-};
 
 const Sidebar = () => {
   const classes = useStyles();
-  const role = useSelector(
-    (state: ReduxStateType) => state.AccountReducer.role
-  );
+  const role = useSelector((state: ReducersType) => state.AccountReducer.role);
   const anchor = "left";
   const [state, setState] = React.useState(false);
 

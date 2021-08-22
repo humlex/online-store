@@ -4,14 +4,7 @@ import { Grid, Box, Container } from "@material-ui/core";
 import AuxiliaryPannel from "../../components/AuxiliaryPannel";
 import Product from "../../components/Product";
 import useStyles from "./useStyles";
-
-type ProductType = {
-  id: number;
-  name: string;
-  img: string;
-  description: string;
-  price: number;
-};
+import { ProductType } from "../../types/types";
 
 const Products = () => {
   const classes = useStyles();
