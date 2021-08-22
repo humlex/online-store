@@ -7,6 +7,7 @@ import {
   Badge,
   MenuItem,
   Menu,
+  ClickAwayListener,
 } from "@material-ui/core";
 
 import { useSelector } from "react-redux";
@@ -17,6 +18,7 @@ import ToggleButton from "../../components/ToggleButton";
 import Logo from "../../components/Logo";
 import useStyles from "./useStyles";
 import Sidebar from "../../components/Sidebar";
+import CatalogMenu from "../../components/CatalogMenu";
 
 type ReduxStateType = {
   AccountReducer: {
@@ -30,11 +32,16 @@ const Header = () => {
     (state: ReduxStateType) => state.AccountReducer.role
   );
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [openCatalog, setOpenCatalog] = React.useState<boolean>(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const handleOpenCatalog = () => {
+    setOpenCatalog(!openCatalog);
+  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -106,57 +113,63 @@ const Header = () => {
   );
 
   return (
-    <div className={classes.grow}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <Sidebar />
-          </IconButton>
-          <Logo />
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <ShoppingCartIcon />
-              </Badge>
-            </IconButton>
-            <ToggleButton />
+    <>
+      <div className={classes.grow}>
+        <AppBar position="static">
+          <Toolbar>
             <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
+              edge="start"
+              className={classes.menuButton}
               color="inherit"
+              aria-label="open drawer"
             >
-              {role === "admin" ? (
-                <Typography className={classes.role}>Admin</Typography>
-              ) : (
-                <Typography className={classes.role}>User</Typography>
-              )}
-              <AccountCircle />
+              <Sidebar />
             </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </div>
+            <Logo />
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              <IconButton color="inherit" onClick={handleOpenCatalog}>
+                <Badge badgeContent={4} color="secondary">
+                  <ClickAwayListener onClickAway={() => setOpenCatalog(false)}>
+                    <ShoppingCartIcon />
+                  </ClickAwayListener>
+                </Badge>
+              </IconButton>
+              <ToggleButton />
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                color="inherit"
+              >
+                {role === "admin" ? (
+                  <Typography className={classes.role}>Admin</Typography>
+                ) : (
+                  <Typography className={classes.role}>User</Typography>
+                )}
+                <AccountCircle />
+              </IconButton>
+            </div>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MoreIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+      </div>
+
+      {openCatalog && <CatalogMenu />}
+    </>
   );
 };
 
