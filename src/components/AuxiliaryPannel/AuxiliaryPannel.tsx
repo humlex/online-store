@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { Box } from "@material-ui/core";
 import Searchbar from "./Searchbar";
-import FilterPannel from "./FilterPannel";
 import useStyles from "./useStyles";
 
 type AuxiliaryPanelProps = {
@@ -19,7 +18,6 @@ const AuxiliaryPannel: FC<AuxiliaryPanelProps> = ({ onChange }) => {
       alignItems="center"
     >
       <Searchbar onChange={(value: string) => onChange(value)} />
-      <FilterPannel />
     </Box>
   );
 };

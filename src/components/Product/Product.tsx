@@ -20,10 +20,16 @@ type ProductProps = {
 
 const Product: FC<ProductProps> = ({ id, name, img, description, price }) => {
   const classes = useStyles();
+  const defaultUrl =
+    "https://i.citrus.ua/uploads/shop/a/6/a6c56497276a0bd71793f2ad0307c60d.jpg";
   return (
     <Grid item xs={3} className={classes.grid_item}>
       <Card className={classes.product_card}>
-        <img className={classes.image} src={img} alt="phone-img" />
+        <img
+          className={classes.image}
+          src={img ? img : defaultUrl}
+          alt="phone-img"
+        />
         <CardContent>
           <Typography className={classes.name}>{name}</Typography>
           <Typography>Model: {description}</Typography>

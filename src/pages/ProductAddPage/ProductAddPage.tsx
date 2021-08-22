@@ -1,5 +1,6 @@
 import React from "react";
+import ProductForm from "../../components/ProductForm";
 
-const ProductAddPage = () => <>It`s ProductAddPage</>;
+const ProductAddPage = () => <ProductForm />;
 
 export default ProductAddPage;
